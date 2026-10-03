@@ -1,0 +1,121 @@
+{
+  "id": "bluesky_stats",
+  "name": "Bluesky Stats",
+  "version": "1.0.0",
+  "description": "Show any Bluesky account's followers, following and post counts, with today's change. No sign-in or API key needed.",
+  "author": "FiestaBoard Team",
+  "repository": "https://github.com/Fiestaboard/fiestaboard-plugin--bluesky-stats",
+  "documentation": "README.md",
+  "icon": "users",
+  "category": "data",
+  "fiestaboard_version": ">=9.5.0",
+  "min_refresh_seconds": 60,
+  "settings_schema": {
+    "type": "object",
+    "properties": {
+      "enabled": {
+        "type": "boolean",
+        "title": "Enable Bluesky Stats",
+        "default": false
+      },
+      "handle": {
+        "type": "string",
+        "title": "Bluesky Handle",
+        "description": "The account to show, for example alice.bsky.social (a leading @ is fine; a bare name like alice means alice.bsky.social). A DID such as did:plc:... also works."
+      },
+      "show_change": {
+        "type": "boolean",
+        "title": "Show Today's Change",
+        "description": "Fill the *_change variables with the change since the first reading of the day (for example +12). The baseline lives in memory and starts over at midnight, when the handle changes, or when FiestaBoard restarts.",
+        "default": true
+      },
+      "refresh_seconds": {
+        "type": "integer",
+        "title": "Refresh Interval (seconds)",
+        "description": "How often to ask Bluesky for new counts.",
+        "default": 900,
+        "minimum": 60
+      }
+    },
+    "required": ["handle"]
+  },
+  "variables": {
+    "groups": {
+      "profile": {"label": "Profile"},
+      "counts": {"label": "Counts"},
+      "change": {"label": "Today's Change"}
+    },
+    "simple": {
+      "display_name": {"description": "Display name (the handle when none is set)", "type": "string", "max_length": 22, "group": "profile", "example": "ALICE RIVERS"},
+      "handle": {"description": "Handle without the @", "type": "string", "max_length": 22, "group": "profile", "example": "ALICE.BSKY.SOCIAL"},
+      "followers": {"description": "Followers, with thousands separators", "type": "string", "max_length": 11, "group": "counts", "example": "12,345"},
+      "followers_short": {"description": "Followers, abbreviated", "type": "string", "max_length": 6, "group": "counts", "example": "12.3K"},
+      "following": {"description": "Accounts followed, with thousands separators", "type": "string", "max_length": 11, "group": "counts", "example": "321"},
+      "following_short": {"description": "Accounts followed, abbreviated", "type": "string", "max_length": 6, "group": "counts", "example": "321"},
+      "posts": {"description": "Posts, with thousands separators", "type": "string", "max_length": 11, "group": "counts", "example": "4,567"},
+      "posts_short": {"description": "Posts, abbreviated", "type": "string", "max_length": 6, "group": "counts", "example": "4.6K"},
+      "followers_count": {"description": "Followers as a plain number", "type": "number", "group": "counts", "example": "12345"},
+      "following_count": {"description": "Following as a plain number", "type": "number", "group": "counts", "example": "321"},
+      "posts_count": {"description": "Posts as a plain number", "type": "number", "group": "counts", "example": "4567"},
+      "followers_change": {"description": "Change in followers since the day's first reading (empty when Show Today's Change is off)", "type": "string", "max_length": 8, "group": "change", "example": "+12"},
+      "following_change": {"description": "Change in following since the day's first reading", "type": "string", "max_length": 8, "group": "change", "example": "+1"},
+      "posts_change": {"description": "Change in posts since the day's first reading", "type": "string", "max_length": 8, "group": "change", "example": "+3"}
+    }
+  },
+  "teaser": "BSKY 12,345 +12",
+  "previews": [
+    {
+      "device_type": "flagship",
+      "rows": [
+        "     ALICE RIVERS",
+        "  @ALICE.BSKY.SOCIAL",
+        "",
+        "FOLLOWERS  12,345 +12",
+        "FOLLOWING     321 +1",
+        "POSTS       4,567 +3"
+      ]
+    },
+    {
+      "device_type": "note",
+      "rows": [
+        "ALICE RIVERS",
+        "12.3K FANS +12",
+        "4.6K POSTS"
+      ]
+    }
+  ],
+  "demo": {
+    "flagship": {
+      "name": "Bluesky Stats Demo",
+      "template": [
+        "{{bluesky_stats.display_name}}",
+        "@{{bluesky_stats.handle}}",
+        "",
+        "FOLLOWERS {{bluesky_stats.followers}} {{bluesky_stats.followers_change}}",
+        "FOLLOWING {{bluesky_stats.following}} {{bluesky_stats.following_change}}",
+        "POSTS {{bluesky_stats.posts}} {{bluesky_stats.posts_change}}"
+      ],
+      "line_metadata": [
+        {"alignment": "center", "wrap": false},
+        {"alignment": "center", "wrap": false},
+        {"alignment": "left", "wrap": false},
+        {"alignment": "left", "wrap": false},
+        {"alignment": "left", "wrap": false},
+        {"alignment": "left", "wrap": false}
+      ]
+    },
+    "note": {
+      "name": "Bluesky Stats (Note)",
+      "template": [
+        "{{bluesky_stats.display_name}}",
+        "{{bluesky_stats.followers_short}} FANS {{bluesky_stats.followers_change}}",
+        "{{bluesky_stats.posts_short}} POSTS"
+      ],
+      "line_metadata": [
+        {"alignment": "left", "wrap": false},
+        {"alignment": "left", "wrap": false},
+        {"alignment": "left", "wrap": false}
+      ]
+    }
+  }
+}
