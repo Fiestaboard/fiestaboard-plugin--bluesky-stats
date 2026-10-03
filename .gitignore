@@ -17,7 +17,7 @@ htmlcov/
 
 # Local CI symlink scaffold (recreated by ci.yml and by run_tests.sh)
 /plugins/
-/bluesky_stats/
+/bluesky_stats
 
 # Editor
 .vscode/
