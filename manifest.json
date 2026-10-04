@@ -37,29 +37,118 @@
         "minimum": 60
       }
     },
-    "required": ["handle"]
+    "required": [
+      "handle"
+    ]
   },
   "variables": {
     "groups": {
-      "profile": {"label": "Profile"},
-      "counts": {"label": "Counts"},
-      "change": {"label": "Today's Change"}
+      "profile": {
+        "label": "Profile"
+      },
+      "counts": {
+        "label": "Counts"
+      },
+      "change": {
+        "label": "Today's Change"
+      }
     },
     "simple": {
-      "display_name": {"description": "Display name (the handle when none is set)", "type": "string", "max_length": 22, "group": "profile", "example": "ALICE RIVERS"},
-      "handle": {"description": "Handle without the @", "type": "string", "max_length": 22, "group": "profile", "example": "ALICE.BSKY.SOCIAL"},
-      "followers": {"description": "Followers, with thousands separators", "type": "string", "max_length": 11, "group": "counts", "example": "12,345"},
-      "followers_short": {"description": "Followers, abbreviated", "type": "string", "max_length": 6, "group": "counts", "example": "12.3K"},
-      "following": {"description": "Accounts followed, with thousands separators", "type": "string", "max_length": 11, "group": "counts", "example": "321"},
-      "following_short": {"description": "Accounts followed, abbreviated", "type": "string", "max_length": 6, "group": "counts", "example": "321"},
-      "posts": {"description": "Posts, with thousands separators", "type": "string", "max_length": 11, "group": "counts", "example": "4,567"},
-      "posts_short": {"description": "Posts, abbreviated", "type": "string", "max_length": 6, "group": "counts", "example": "4.6K"},
-      "followers_count": {"description": "Followers as a plain number", "type": "number", "group": "counts", "example": "12345"},
-      "following_count": {"description": "Following as a plain number", "type": "number", "group": "counts", "example": "321"},
-      "posts_count": {"description": "Posts as a plain number", "type": "number", "group": "counts", "example": "4567"},
-      "followers_change": {"description": "Change in followers since the day's first reading (empty when Show Today's Change is off)", "type": "string", "max_length": 8, "group": "change", "example": "+12"},
-      "following_change": {"description": "Change in following since the day's first reading", "type": "string", "max_length": 8, "group": "change", "example": "+1"},
-      "posts_change": {"description": "Change in posts since the day's first reading", "type": "string", "max_length": 8, "group": "change", "example": "+3"}
+      "display_name": {
+        "description": "Display name (the handle when none is set)",
+        "type": "string",
+        "max_length": 22,
+        "group": "profile",
+        "example": "ALICE RIVERS"
+      },
+      "handle": {
+        "description": "Handle without the @",
+        "type": "string",
+        "max_length": 22,
+        "group": "profile",
+        "example": "ALICE.BSKY.SOCIAL"
+      },
+      "followers": {
+        "description": "Followers, with thousands separators",
+        "type": "string",
+        "max_length": 11,
+        "group": "counts",
+        "example": "12,345"
+      },
+      "followers_short": {
+        "description": "Followers, abbreviated",
+        "type": "string",
+        "max_length": 6,
+        "group": "counts",
+        "example": "12.3K"
+      },
+      "following": {
+        "description": "Accounts followed, with thousands separators",
+        "type": "string",
+        "max_length": 11,
+        "group": "counts",
+        "example": "321"
+      },
+      "following_short": {
+        "description": "Accounts followed, abbreviated",
+        "type": "string",
+        "max_length": 6,
+        "group": "counts",
+        "example": "321"
+      },
+      "posts": {
+        "description": "Posts, with thousands separators",
+        "type": "string",
+        "max_length": 11,
+        "group": "counts",
+        "example": "4,567"
+      },
+      "posts_short": {
+        "description": "Posts, abbreviated",
+        "type": "string",
+        "max_length": 6,
+        "group": "counts",
+        "example": "4.6K"
+      },
+      "followers_count": {
+        "description": "Followers as a plain number",
+        "type": "number",
+        "group": "counts",
+        "example": "12345"
+      },
+      "following_count": {
+        "description": "Following as a plain number",
+        "type": "number",
+        "group": "counts",
+        "example": "321"
+      },
+      "posts_count": {
+        "description": "Posts as a plain number",
+        "type": "number",
+        "group": "counts",
+        "example": "4567"
+      },
+      "followers_change": {
+        "description": "Change in followers since the day's first reading (empty when Show Today's Change is off)",
+        "type": "string",
+        "max_length": 8,
+        "group": "change",
+        "example": "+12"
+      },
+      "following_change": {
+        "description": "Change in following since the day's first reading",
+        "type": "string",
+        "max_length": 8,
+        "group": "change",
+        "example": "+1"
+      },
+      "posts_change": {
+        "description": "Change in posts since the day's first reading",
+        "type": "string",
+        "max_length": 8,
+        "group": "change",
+        "example": "+3"
+      }
     }
   },
   "teaser": "BSKY 12,345 +12",
@@ -96,12 +185,30 @@
         "POSTS {{bluesky_stats.posts}} {{bluesky_stats.posts_change}}"
       ],
       "line_metadata": [
-        {"alignment": "center", "wrap": false},
-        {"alignment": "center", "wrap": false},
-        {"alignment": "left", "wrap": false},
-        {"alignment": "left", "wrap": false},
-        {"alignment": "left", "wrap": false},
-        {"alignment": "left", "wrap": false}
+        {
+          "alignment": "center",
+          "wrap": false
+        },
+        {
+          "alignment": "center",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        }
       ]
     },
     "note": {
@@ -112,10 +219,27 @@
         "{{bluesky_stats.posts_short}} POSTS"
       ],
       "line_metadata": [
-        {"alignment": "left", "wrap": false},
-        {"alignment": "left", "wrap": false},
-        {"alignment": "left", "wrap": false}
+        {
+          "alignment": "left",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        }
       ]
     }
-  }
+  },
+  "screenshots": [
+    {
+      "src": "docs/board-display.png",
+      "alt": "Bluesky Stats on a FiestaBoard",
+      "caption": "The default template",
+      "primary": true
+    }
+  ]
 }
